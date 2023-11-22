@@ -1,0 +1,60 @@
+<!-- views/visualizar.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Contactos</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visualizar Contactos</h1>
+  <form action="/visualizar/buscar" method="post">
+    <label for="searchTerm">Buscar:</label>
+    <input type="text" name="searchTerm" placeholder="Ingrese término de búsqueda">
+    <button type="submit">Buscar</button>
+  </form>
+  <% if (contacts.length > 0) { %>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+      <% contacts.forEach(contact => { %>
+        <tr>
+          <td><%= contact.nombre %></td>
+          <td><%= contact.apellido %></td>
+          <td><%= contact.telefono %></td>
+          <td><%= contact.email %></td>
+          <td>
+            <a href="/contact/<%= contact._id %>/edit">Editar</a>
+            <a href="/contact/<%= contact._id %>/delete">Eliminar</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  <% } else { %>
+    <p>No se encontraron contactos.</p>
+  <% } %>
+  <br>
+  <a href="/">Volver a la página principal</a>
+</body>
+</html>

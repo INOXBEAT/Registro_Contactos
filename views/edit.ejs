@@ -1,0 +1,30 @@
+<!-- views/edit.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Contacto</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Editar Contacto</h1>
+  <a href="/">Cancelar</a>
+  <form action="/contact/<%= contact._id %>/edit" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" value="<%= contact.nombre %>" required>
+    <br>
+    <label for="apellido">Apellido:</label>
+    <input type="text" name="apellido" value="<%= contact.apellido %>" required>
+    <br>
+    <label for="telefono">Teléfono:</label>
+    <input type="text" name="telefono" value="<%= contact.telefono %>" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="<%= contact.email %>" required>
+    <br>
+    <button type="submit">Guardar Cambios</button>
+  </form>
+  
+</body>
+</html>
